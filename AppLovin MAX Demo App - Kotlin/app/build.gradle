@@ -5,11 +5,11 @@ def isLocalAppLovinWorkspace = rootProject.name == "Android-Workspace"
 
 android {
     namespace "com.applovin.enterprise.apps.demoapp"
-    compileSdk 34
+    compileSdk 35
     defaultConfig {
-        applicationId "com.applovin.enterprise.apps.demoapp"
+        applicationId "com.nps.adiscope.sampleapp"
         minSdkVersion 21
-        targetSdk 34
+        targetSdk 35
         versionCode 10000
         versionName "1.0"
         multiDexEnabled true
@@ -68,6 +68,6 @@ dependencies {
     if (isLocalAppLovinWorkspace) {
         implementation(project(":Android-SDK"))
     } else {
-        implementation("com.applovin:applovin-sdk:+@aar")
+        implementation 'com.applovin:applovin-sdk:+'
     }
 }
