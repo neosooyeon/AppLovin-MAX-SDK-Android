@@ -16,6 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <meta-data android:name="applovin.sdk.verbose_logging" android:value="true" />
+
         <!-- 포그라운드 서비스 -->
         <service
             android:name="com.applovin.enterprise.apps.demoapp.AdiscopeForegroundService"
@@ -104,5 +106,8 @@
             android:name="com.applovin.enterprise.apps.demoapp.ads.max.nativead.RecyclerViewNativeAdActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
             android:parentActivityName="com.applovin.enterprise.apps.demoapp.MainActivity" />
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-9819870612497647~4687058697"/>
     </application>
 </manifest>
