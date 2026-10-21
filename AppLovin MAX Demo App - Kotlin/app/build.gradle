@@ -104,6 +104,12 @@ dependencies {
     /* adiscope max 모듈 의존성 */
     implementation 'org.jetbrains.kotlin:kotlin-stdlib:2.2.21'
     implementation 'com.applovin:applovin-sdk:13.6.4'
+    implementation 'com.applovin.mediation:google-adapter:25.2.0.0'
+    implementation 'com.applovin.mediation:vungle-adapter:7.7.8.1'
+    implementation 'com.applovin.mediation:bytedance-adapter:8.1.0.5.0'
+    implementation 'com.applovin.mediation:facebook-adapter:6.21.0.0'
+    implementation 'com.applovin.mediation:mintegral-adapter:17.1.51.0'
+    implementation 'com.applovin.mediation:unityads-adapter:4.16.6.0'
     implementation 'com.applovin.mediation:inmobi-adapter:11.5.0.0'
     implementation 'com.applovin.mediation:bidmachine-adapter:3.6.1.0'
     implementation 'com.applovin.mediation:ogury-presage-adapter:6.2.2.0'
