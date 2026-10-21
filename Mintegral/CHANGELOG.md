@@ -1,5 +1,50 @@
 # Changelog
 
+## 17.1.91.0
+* Certified with Mintegral SDK 17.1.91.
+
+## 17.1.81.0
+* Certified with Mintegral SDK 17.1.81.
+
+## 17.1.71.0
+* Certified with Mintegral SDK 17.1.71.
+
+## 17.1.61.0
+* Certified with Mintegral SDK 17.1.61.
+
+## 17.1.51.0
+* Certified with Mintegral SDK 17.1.51.
+
+## 17.1.21.0
+* Certified with Mintegral SDK 17.1.21.
+
+## 17.1.11.0
+* Certified with Mintegral SDK 17.1.11.
+
+## 17.0.91.0
+* Certified with Mintegral SDK 17.0.91.
+
+## 17.0.81.0
+* Certified with Mintegral SDK 17.0.81.
+
+## 17.0.71.0
+* Certified with Mintegral SDK 17.0.71.
+
+## 17.0.61.0
+* Certified with Mintegral SDK 17.0.61.
+
+## 17.0.51.0
+* Certified with Mintegral SDK 17.0.51.
+
+## 17.0.41.0
+* Certified with Mintegral SDK 17.0.41.
+
+## 17.0.31.0
+* Certified with Mintegral SDK 17.0.31.
+
+## 16.10.11.0
+* Certified with Mintegral SDK 16.10.11.
+
 ## 16.9.91.0
 * Certified with Mintegral SDK 16.9.91.
 

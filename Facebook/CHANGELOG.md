@@ -1,5 +1,17 @@
 # Changelog
 
+## 6.22.0.1
+* Fixed interstitial and rewarded ads not firing display failed callbacks when Facebook reports error 9001 ("Ad could not be presented") during ad show.
+
+## 6.22.0.0
+* Certified with Facebook SDK 6.22.0.
+* Requires compileSdk 36 and Android Gradle Plugin 8.9.1 or higher to match Facebook Audience Network.
+* Migrated native AdOptions rendering to Facebook's preferred position API.
+
+## 6.21.0.0
+* Certified with Facebook SDK 6.21.0.
+* Updated ad display failed error code.
+
 ## 6.20.0.0
 * Certified with Facebook SDK 6.20.0.
 * Removed deprecated code paths based on the minimum supported AppLovin MAX SDK version 13.0.0.

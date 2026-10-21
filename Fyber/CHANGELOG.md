@@ -1,5 +1,32 @@
 # Changelog
 
+## 8.5.0.0
+* Certified with Fyber SDK 8.5.0.
+
+## 8.4.7.0
+* Certified with Fyber SDK 8.4.7.
+
+## 8.4.6.0
+* Certified with Fyber SDK 8.4.6.
+
+## 8.4.5.0
+* Certified with Fyber SDK 8.4.5.
+
+## 8.4.4.0
+* Certified with Fyber SDK 8.4.4.
+
+## 8.4.3.0
+* Certified with Fyber SDK 8.4.3.
+
+## 8.4.2.0
+* Certified with Fyber SDK 8.4.2.
+
+## 8.4.1.0
+* Certified with Fyber SDK 8.4.1.
+
+## 8.4.0.0
+* Certified with Fyber SDK 8.4.0.
+
 ## 8.3.8.0
 * Certified with Fyber SDK 8.3.8.
 * Updated ad display failed error code.

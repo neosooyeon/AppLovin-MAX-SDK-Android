@@ -1,5 +1,48 @@
 # Changelog
 
+## 9.6.1.0.0
+* Certified with IronSource SDK 9.6.1.
+
+## 9.6.0.0.1
+* Remove ProGuard rules since they are included in IronSource's libraries.
+
+## 9.6.0.0.0
+* Certified with IronSource SDK 9.6.0.
+
+## 9.5.0.0.0
+* Certified with IronSource SDK 9.5.0.
+
+## 9.4.4.0.0
+* Certified with IronSource SDK 9.4.4.
+
+## 9.4.3.0.0
+* Certified with IronSource SDK 9.4.3.
+
+## 9.4.2.0.0
+* Certified with IronSource SDK 9.4.2.
+
+## 9.4.1.0.0
+* Certified with IronSource SDK 9.4.1.
+
+## 9.4.0.0.0
+* Certified with IronSource SDK 9.4.0.
+
+## 9.3.0.0.0
+* Certified with IronSource SDK 9.3.0.
+
+## 9.2.0.0.0
+* Certified with IronSource SDK 9.2.0.
+
+## 9.1.0.0.0
+* Certified with IronSource SDK 9.1.0.
+
+## 9.0.0.0.0
+* Certified with IronSource SDK 9.0.0.
+* Removed dependency on deprecated `IronSource.AD_UNIT` enum.
+
+## 8.11.1.0.0
+* Certified with IronSource SDK 8.11.1.
+
 ## 8.11.0.0.0
 * Certified with IronSource SDK 8.11.0.
 

@@ -1,5 +1,26 @@
 # Changelog
 
+## 3.8.0.0
+* Certified with BidMachine SDK 3.8.0.
+
+## 3.7.1.0
+* Certified with BidMachine SDK 3.7.1.
+
+## 3.7.0.0
+* Certified with BidMachine SDK 3.7.0.
+
+## 3.6.1.0
+* Certified with BidMachine SDK 3.6.1.
+
+## 3.6.0.0
+* Certified with BidMachine SDK 3.6.0.
+
+## 3.5.1.0
+* Certified with BidMachine SDK 3.5.1.
+
+## 3.5.0.0
+* Certified with BidMachine SDK 3.5.0.
+
 ## 3.4.0.0
 * Certified with BidMachine SDK 3.4.0.
 

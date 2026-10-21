@@ -277,7 +277,9 @@ public class SmaatoMediationAdapter
         if ( interstitialAd == null || !interstitialAd.isAvailableForPresentation() )
         {
             log( "Interstitial ad failed to load - ad not ready" );
-            ROUTER.onAdDisplayFailed( placementId, new MaxAdapterError( MaxAdapterError.AD_DISPLAY_FAILED, 0, "Interstitial ad not ready" ) );
+            ROUTER.onAdDisplayFailed( placementId, new MaxAdapterError( MaxAdapterError.AD_DISPLAY_FAILED,
+                                                                        MaxAdapterError.AD_NOT_READY.getCode(),
+                                                                        MaxAdapterError.AD_NOT_READY.getMessage() ) );
             return;
         }
 
@@ -353,7 +355,9 @@ public class SmaatoMediationAdapter
         else
         {
             log( "Rewarded ad not ready." );
-            ROUTER.onAdDisplayFailed( placementId, new MaxAdapterError( MaxAdapterError.AD_DISPLAY_FAILED, 0, "Rewarded ad not ready" ) );
+            ROUTER.onAdDisplayFailed( placementId, new MaxAdapterError( MaxAdapterError.AD_DISPLAY_FAILED,
+                                                                        MaxAdapterError.AD_NOT_READY.getCode(),
+                                                                        MaxAdapterError.AD_NOT_READY.getMessage() ) );
         }
     }
 
@@ -572,16 +576,16 @@ public class SmaatoMediationAdapter
         {
             log( "AdView loaded" );
 
-            if ( !TextUtils.isEmpty( bannerView.getCreativeId() ) )
+            if ( TextUtils.isEmpty( bannerView.getCreativeId() ) )
+            {
+                listener.onAdViewAdLoaded( adView );
+            }
+            else
             {
                 final Bundle extraInfo = new Bundle( 1 );
                 extraInfo.putString( "creative_id", bannerView.getCreativeId() );
 
                 listener.onAdViewAdLoaded( adView, extraInfo );
-            }
-            else
-            {
-                listener.onAdViewAdLoaded( adView );
             }
         }
 
@@ -955,7 +959,9 @@ public class SmaatoMediationAdapter
                     interstitialAds.remove( placementId );
                 }
 
-                final MaxAdapterError adapterError = new MaxAdapterError( MaxAdapterError.AD_DISPLAY_FAILED, interstitialError.ordinal(), interstitialError.name() );
+                final MaxAdapterError adapterError = new MaxAdapterError( MaxAdapterError.AD_DISPLAY_FAILED,
+                                                                          interstitialError.ordinal(),
+                                                                          interstitialError.name() );
                 onAdDisplayFailed( placementId, adapterError );
             }
         }
@@ -1076,7 +1082,9 @@ public class SmaatoMediationAdapter
                     rewardedAds.remove( placementId );
                 }
 
-                final MaxAdapterError adapterError = new MaxAdapterError( MaxAdapterError.AD_DISPLAY_FAILED, rewardedError.ordinal(), rewardedError.name() );
+                final MaxAdapterError adapterError = new MaxAdapterError( MaxAdapterError.AD_DISPLAY_FAILED,
+                                                                          rewardedError.ordinal(),
+                                                                          rewardedError.name() );
                 onAdDisplayFailed( placementId, adapterError );
             }
         }
@@ -1140,16 +1148,16 @@ public class SmaatoMediationAdapter
 
         private void onAdLoaded(final String placementId, final String creativeId)
         {
-            if ( !TextUtils.isEmpty( creativeId ) )
+            if ( TextUtils.isEmpty( creativeId ) )
+            {
+                onAdLoaded( placementId );
+            }
+            else
             {
                 final Bundle extraInfo = new Bundle( 1 );
                 extraInfo.putString( "creative_id", creativeId );
 
                 onAdLoaded( placementId, extraInfo );
-            }
-            else
-            {
-                onAdLoaded( placementId );
             }
         }
 

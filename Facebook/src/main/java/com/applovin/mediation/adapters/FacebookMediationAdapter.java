@@ -34,7 +34,6 @@ import com.applovin.sdk.AppLovinSdkUtils;
 import com.facebook.ads.Ad;
 import com.facebook.ads.AdError;
 import com.facebook.ads.AdListener;
-import com.facebook.ads.AdOptionsView;
 import com.facebook.ads.AdSettings;
 import com.facebook.ads.AdSize;
 import com.facebook.ads.AdView;
@@ -46,6 +45,7 @@ import com.facebook.ads.MediaView;
 import com.facebook.ads.NativeAd;
 import com.facebook.ads.NativeAdBase;
 import com.facebook.ads.NativeAdListener;
+import com.facebook.ads.NativeAdOptionsViewPosition;
 import com.facebook.ads.NativeAdView;
 import com.facebook.ads.NativeBannerAd;
 import com.facebook.ads.RewardedVideoAd;
@@ -242,13 +242,17 @@ public class FacebookMediationAdapter
             else
             {
                 log( "Unable to show interstitial - ad expired..." );
-                listener.onInterstitialAdDisplayFailed( MaxAdapterError.AD_EXPIRED );
+                listener.onInterstitialAdDisplayFailed( new MaxAdapterError( MaxAdapterError.AD_DISPLAY_FAILED,
+                                                                             MaxAdapterError.AD_EXPIRED.getCode(),
+                                                                             MaxAdapterError.AD_EXPIRED.getMessage() ) );
             }
         }
         else
         {
             log( "Unable to show interstitial - no ad loaded..." );
-            listener.onInterstitialAdDisplayFailed( new MaxAdapterError( MaxAdapterError.AD_DISPLAY_FAILED, 0, "Interstitial ad not ready" ) );
+            listener.onInterstitialAdDisplayFailed( new MaxAdapterError( MaxAdapterError.AD_DISPLAY_FAILED,
+                                                                         MaxAdapterError.AD_NOT_READY.getCode(),
+                                                                         MaxAdapterError.AD_NOT_READY.getMessage() ) );
         }
     }
 
@@ -294,13 +298,17 @@ public class FacebookMediationAdapter
             else
             {
                 log( "Unable to show rewarded ad - ad expired..." );
-                listener.onRewardedAdDisplayFailed( MaxAdapterError.AD_EXPIRED );
+                listener.onRewardedAdDisplayFailed( new MaxAdapterError( MaxAdapterError.AD_DISPLAY_FAILED,
+                                                                         MaxAdapterError.AD_EXPIRED.getCode(),
+                                                                         MaxAdapterError.AD_EXPIRED.getMessage() ) );
             }
         }
         else
         {
             log( "Unable to show rewarded ad - no ad loaded..." );
-            listener.onRewardedAdDisplayFailed( new MaxAdapterError( MaxAdapterError.AD_DISPLAY_FAILED, 0, "Rewarded ad not ready" ) );
+            listener.onRewardedAdDisplayFailed( new MaxAdapterError( MaxAdapterError.AD_DISPLAY_FAILED,
+                                                                     MaxAdapterError.AD_NOT_READY.getCode(),
+                                                                     MaxAdapterError.AD_NOT_READY.getMessage() ) );
         }
     }
 
@@ -318,6 +326,7 @@ public class FacebookMediationAdapter
         if ( isNative )
         {
             mNativeAd = new NativeAd( getContext( activity ), placementId );
+            mNativeAd.setPreferredAdOptionsViewPosition( NativeAdOptionsViewPosition.TOP_RIGHT );
             mNativeAd.loadAd( mNativeAd.buildLoadAdConfig()
                                       .withAdListener( new NativeAdViewListener( parameters.getServerParameters(), adFormat, activity, listener ) )
                                       .withBid( parameters.getBidResponse() )
@@ -348,6 +357,7 @@ public class FacebookMediationAdapter
         if ( isNativeBanner )
         {
             mNativeBannerAd = new NativeBannerAd( context, placementId );
+            mNativeBannerAd.setPreferredAdOptionsViewPosition( NativeAdOptionsViewPosition.TOP_RIGHT );
             mNativeBannerAd.loadAd( mNativeBannerAd.buildLoadAdConfig()
                                             .withAdListener( new MaxNativeAdListener( parameters.getServerParameters(), context, listener ) )
                                             .withBid( parameters.getBidResponse() )
@@ -356,6 +366,7 @@ public class FacebookMediationAdapter
         else
         {
             mNativeAd = new NativeAd( context, placementId );
+            mNativeAd.setPreferredAdOptionsViewPosition( NativeAdOptionsViewPosition.TOP_RIGHT );
             mNativeAd.loadAd( mNativeAd.buildLoadAdConfig()
                                       .withAdListener( new MaxNativeAdListener( parameters.getServerParameters(), context, listener ) )
                                       .withBid( parameters.getBidResponse() )
@@ -450,8 +461,10 @@ public class FacebookMediationAdapter
                 break;
             case AdError.MISSING_DEPENDENCIES_ERROR:
             case AdError.API_NOT_SUPPORTED:
-            case AdError.AD_PRESENTATION_ERROR_CODE:
                 adapterError = MaxAdapterError.INTERNAL_ERROR;
+                break;
+            case AdError.AD_PRESENTATION_ERROR_CODE:
+                adapterError = MaxAdapterError.AD_DISPLAY_FAILED;
                 break;
         }
 
@@ -462,7 +475,7 @@ public class FacebookMediationAdapter
 
     private String getMediationIdentifier()
     {
-        return "APPLOVIN_" + AppLovinSdk.VERSION + ":" + getAdapterVersion();
+        return "APPLOVIN_" + AppLovinSdk.VERSION + ':' + getAdapterVersion();
     }
 
     private MaxNativeAdView createMaxNativeAdView(final MaxNativeAd maxNativeAd, final String templateName, @Nullable final Activity activity)
@@ -497,8 +510,18 @@ public class FacebookMediationAdapter
         public void onError(final Ad ad, final AdError adError)
         {
             MaxAdapterError adapterError = toMaxError( adError );
-            log( "Interstitial ad (" + ad.getPlacementId() + ") failed to load with error: " + adapterError );
-            listener.onInterstitialAdLoadFailed( adapterError );
+
+            // Both display and load failures are surfaced through this callback
+            if ( adError.getErrorCode() == AdError.AD_PRESENTATION_ERROR_CODE )
+            {
+                log( "Interstitial ad (" + ad.getPlacementId() + ") failed to display with error: " + adapterError );
+                listener.onInterstitialAdDisplayFailed( adapterError );
+            }
+            else
+            {
+                log( "Interstitial ad (" + ad.getPlacementId() + ") failed to load with error: " + adapterError );
+                listener.onInterstitialAdLoadFailed( adapterError );
+            }
         }
 
         @Override
@@ -580,8 +603,18 @@ public class FacebookMediationAdapter
         public void onError(final Ad ad, final AdError adError)
         {
             MaxAdapterError adapterError = toMaxError( adError );
-            log( "Rewarded ad (" + ad.getPlacementId() + ") failed to load with error (" + adapterError );
-            listener.onRewardedAdLoadFailed( adapterError );
+
+            // Both display and load failures are surfaced through this callback
+            if ( adError.getErrorCode() == AdError.AD_PRESENTATION_ERROR_CODE )
+            {
+                log( "Rewarded ad (" + ad.getPlacementId() + ") failed to display with error: " + adapterError );
+                listener.onRewardedAdDisplayFailed( adapterError );
+            }
+            else
+            {
+                log( "Rewarded ad (" + ad.getPlacementId() + ") failed to load with error: " + adapterError );
+                listener.onRewardedAdLoadFailed( adapterError );
+            }
         }
 
         @Override
@@ -784,7 +817,6 @@ public class FacebookMediationAdapter
                             .setBody( mNativeAd.getAdBodyText() )
                             .setCallToAction( mNativeAd.getAdCallToAction() )
                             .setIconView( iconView )
-                            .setOptionsView( new AdOptionsView( context, mNativeAd, null ) )
                             .setMediaView( mediaView )
                             .build();
 
@@ -793,7 +825,7 @@ public class FacebookMediationAdapter
                     final String templateName = BundleUtils.getString( "template", "", serverParameters );
                     if ( templateName.contains( "vertical" ) )
                     {
-                        if ( templateName.equals( "vertical" ) )
+                        if ( "vertical".equals( templateName ) )
                         {
                             String verticalTemplateName = ( adFormat == MaxAdFormat.LEADER ) ? "vertical_leader_template" : "vertical_media_banner_template";
                             maxNativeAdView = createMaxNativeAdView( maxNativeAd, verticalTemplateName, activity );
@@ -1001,8 +1033,7 @@ public class FacebookMediationAdapter
                     .setAdvertiser( nativeAd.getAdvertiserName() )
                     .setBody( nativeAd.getAdBodyText() )
                     .setCallToAction( nativeAd.getAdCallToAction() )
-                    .setIcon( new MaxNativeAd.MaxNativeAdImage( iconDrawable ) )
-                    .setOptionsView( new AdOptionsView( context, nativeAd, null ) );
+                    .setIcon( new MaxNativeAd.MaxNativeAdImage( iconDrawable ) );
             if ( nativeAd instanceof NativeAd )
             {
                 builder.setMainImage( mainImage );
@@ -1018,13 +1049,13 @@ public class FacebookMediationAdapter
 
                 if ( iconDrawable != null )
                 {
-                    mediaViewAspectRatio = (float) iconDrawable.getIntrinsicWidth() / (float) iconDrawable.getIntrinsicHeight();
+                    mediaViewAspectRatio = (float) iconDrawable.getIntrinsicWidth() / iconDrawable.getIntrinsicHeight();
                 }
             }
             else
             {
                 builder.setMediaView( mediaView );
-                mediaViewAspectRatio = (float) mediaView.getMediaWidth() / (float) mediaView.getMediaHeight();
+                mediaViewAspectRatio = (float) mediaView.getMediaWidth() / mediaView.getMediaHeight();
             }
 
             builder.setMediaContentAspectRatio( mediaViewAspectRatio );

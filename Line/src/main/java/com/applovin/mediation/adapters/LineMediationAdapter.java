@@ -36,7 +36,6 @@ import com.applovin.sdk.AppLovinSdkUtils;
 import com.five_corp.ad.AdLoader;
 import com.five_corp.ad.AdSlotConfig;
 import com.five_corp.ad.BidData;
-import com.five_corp.ad.FiveAd;
 import com.five_corp.ad.FiveAdConfig;
 import com.five_corp.ad.FiveAdCustomLayout;
 import com.five_corp.ad.FiveAdCustomLayoutEventListener;
@@ -47,7 +46,6 @@ import com.five_corp.ad.FiveAdNative;
 import com.five_corp.ad.FiveAdNativeEventListener;
 import com.five_corp.ad.FiveAdVideoReward;
 import com.five_corp.ad.FiveAdVideoRewardEventListener;
-import com.five_corp.ad.NeedGdprNonPersonalizedAdsTreatment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -75,7 +73,7 @@ public class LineMediationAdapter
     @Override
     public String getSdkVersion()
     {
-        return FiveAd.getSdkSemanticVersion();
+        return AdLoader.getSemanticVersion();
     }
 
     @Override
@@ -171,7 +169,7 @@ public class LineMediationAdapter
         }
         else
         {
-            final AdSlotConfig slotConfig = new AdSlotConfig( slotId );
+            final AdSlotConfig slotConfig = createSlotConfig( slotId );
             final AdLoader adLoader = retrieveAdLoader( parameters, getContext( activity ) );
             adLoader.loadInterstitialAd( slotConfig, interstitialListener );
         }
@@ -217,7 +215,7 @@ public class LineMediationAdapter
         }
         else
         {
-            final AdSlotConfig slotConfig = new AdSlotConfig( slotId );
+            final AdSlotConfig slotConfig = createSlotConfig( slotId );
             final AdLoader adLoader = retrieveAdLoader( parameters, getContext( activity ) );
             adLoader.loadRewardAd( slotConfig, rewardedListener );
         }
@@ -267,7 +265,7 @@ public class LineMediationAdapter
             }
             else
             {
-                final AdSlotConfig slotConfig = new AdSlotConfig( slotId );
+                final AdSlotConfig slotConfig = createSlotConfig( slotId );
                 final AdLoader adLoader = retrieveAdLoader( parameters, getContext( activity ) );
                 adLoader.loadNativeAd( slotConfig, new DisplayMetrics().widthPixels, nativeAdViewListener );
             }
@@ -284,7 +282,7 @@ public class LineMediationAdapter
             }
             else
             {
-                final AdSlotConfig slotConfig = new AdSlotConfig( slotId );
+                final AdSlotConfig slotConfig = createSlotConfig( slotId );
                 final AdLoader adLoader = retrieveAdLoader( parameters, getContext( activity ) );
                 adLoader.loadBannerAd( slotConfig, new DisplayMetrics().widthPixels, adViewListener );
             }
@@ -310,7 +308,7 @@ public class LineMediationAdapter
         }
         else
         {
-            final AdSlotConfig slotConfig = new AdSlotConfig( slotId );
+            final AdSlotConfig slotConfig = createSlotConfig( slotId );
             final AdLoader adLoader = retrieveAdLoader( parameters, getContext( activity ) );
             adLoader.loadNativeAd( slotConfig, new DisplayMetrics().widthPixels, nativeAdListener );
         }
@@ -319,6 +317,14 @@ public class LineMediationAdapter
     private Context getContext(@Nullable final Activity activity)
     {
         return ( activity != null ) ? activity.getApplicationContext() : getApplicationContext();
+    }
+
+    private AdSlotConfig createSlotConfig(final String slotId)
+    {
+        final AdSlotConfig slotConfig = new AdSlotConfig( slotId );
+        slotConfig.setMediationInfo( "max", AppLovinSdk.VERSION );
+
+        return slotConfig;
     }
 
     private AdLoader retrieveAdLoader(final MaxAdapterParameters parameters, final Context context)
@@ -341,12 +347,6 @@ public class LineMediationAdapter
         config.isTest = parameters.isTesting();
 
         updateMuteState( parameters.getServerParameters(), config );
-
-        final Boolean hasUserConsent = parameters.hasUserConsent();
-        if ( hasUserConsent != null )
-        {
-            config.needGdprNonPersonalizedAdsTreatment = hasUserConsent ? NeedGdprNonPersonalizedAdsTreatment.FALSE : NeedGdprNonPersonalizedAdsTreatment.TRUE;
-        }
 
         return config;
     }
@@ -792,7 +792,7 @@ public class LineMediationAdapter
 
                             final MaxNativeAdView maxNativeAdView;
                             // Fallback case to be removed when backend sends down full template names for vertical native ads
-                            if ( templateName.equals( "vertical" ) )
+                            if ( "vertical".equals( templateName ) )
                             {
                                 String verticalTemplateName = ( adFormat == MaxAdFormat.LEADER ) ? "vertical_leader_template" : "vertical_media_banner_template";
                                 maxNativeAdView = new MaxNativeAdView( maxNativeAd, verticalTemplateName, getApplicationContext() );

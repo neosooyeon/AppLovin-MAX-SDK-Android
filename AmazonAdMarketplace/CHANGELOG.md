@@ -1,5 +1,42 @@
 # Changelog
 
+## 12.0.3.0
+* Certified with AmazonAdMarketplace SDK 12.0.3.
+
+## 12.0.2.0
+* Certified with AmazonAdMarketplace SDK 12.0.2.
+
+## 12.0.1.0
+* Certified with AmazonAdMarketplace SDK 12.0.1.
+* Add ProGuard `-dontwarn` for `com.google.android.libraries.ads.mobile.sdk.**` to fix R8 missing-class errors from optional Google Mobile Ads Next Gen references in APS 12.x.
+
+## 11.3.1.0
+* Certified with AmazonAdMarketplace SDK 11.3.1.
+
+## 11.3.0.0
+* Certified with AmazonAdMarketplace SDK 11.3.0.
+
+## 11.2.1.0
+* Certified with AmazonAdMarketplace SDK 11.2.1.
+
+## 11.2.0.0
+* Certified with AmazonAdMarketplace SDK 11.2.0.
+
+## 11.1.2.0
+* Certified with AmazonAdMarketplace SDK 11.1.2.
+
+## 11.1.1.0
+* Certified with AmazonAdMarketplace SDK 11.1.1.
+
+## 11.1.0.1
+* Fixed crashes caused by concurrent modification to `usedAdLoaders` by making it a synchronized `HashSet`.
+
+## 11.1.0.0
+* Certified with AmazonAdMarketplace SDK 11.1.0.
+
+## 11.0.4.0
+* Certified with AmazonAdMarketplace SDK 11.0.4.
+
 ## 11.0.2.0
 * Certified with AmazonAdMarketplace SDK 11.0.2.
 

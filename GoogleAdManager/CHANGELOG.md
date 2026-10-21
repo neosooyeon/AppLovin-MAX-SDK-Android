@@ -1,5 +1,38 @@
 # Changelog
 
+## 25.5.0.0
+* Certified with GoogleAdManager SDK 25.5.0.
+
+## 25.4.0.0
+* Certified with GoogleAdManager SDK 25.4.0.
+
+## 25.3.0.0
+* Certified with GoogleAdManager SDK 25.3.0.
+
+## 25.2.0.0
+* Certified with GoogleAdManager SDK 25.2.0.
+
+## 25.1.0.0
+* Certified with GoogleAdManager SDK 25.1.0.
+
+## 25.0.0.0
+* Certified with GoogleAdManager SDK 25.0.0.
+
+## 24.9.0.1
+* Enable publishers to pass arbitrary values to `AdManagerAdRequest`.
+
+## 24.9.0.0
+* Certified with GoogleAdManager SDK 24.9.0.
+
+## 24.8.0.0
+* Certified with GoogleAdManager SDK 24.8.0.
+
+## 24.7.0.0
+* Certified with GoogleAdManager SDK 24.7.0.
+
+## 24.6.0.0
+* Certified with GoogleAdManager SDK 24.6.0.
+
 ## 24.5.0.0
 * Certified with GoogleAdManager SDK 24.5.0.
 
@@ -28,7 +61,7 @@
 * Introduced `verification.properties` to facilitate adapter ownership verification with Google SDK console.
 
 ## 23.6.0.2
-* Add support for [inline adaptive banners in MRECs](https://developers.applovin.com/en/max/android/ad-formats/banner-and-mrec-ads/#inline-adaptive-banners-in-mrecs).
+* Add support for [inline adaptive banners in MRECs](https://support.axon.ai/en/max/android/ad-formats/banner-and-mrec-ads#inline-adaptive-mrecs).
 * Remove support for rewarded interstitial ads.
 
 ## 23.6.0.1
@@ -57,7 +90,7 @@
 * Certified with GoogleAdManager SDK 23.3.0.
 
 ## 23.2.0.1
-* Add support for [inline adaptive banner ads](https://developers.applovin.com/en/android/ad-formats/banner-mrec-ads/#inline-adaptive-banners).
+* Add support for [inline adaptive banner ads](https://support.axon.ai/en/max/android/ad-formats/banner-and-mrec-ads#inline-adaptive-banners).
 
 ## 23.2.0.0
 * Certified with GoogleAdManager SDK 23.2.0.

@@ -1,5 +1,23 @@
 # Changelog
 
+## 3000.1.1.1
+* Pass mediation name and version to the Line SDK via `AdSlotConfig.setMediationInfo()`.
+
+## 3000.1.1.0
+* Certified with Line SDK 3.1.1.
+
+## 3000.0.1.0
+* Certified with Line SDK 3.0.1.
+
+## 2025.10.28.0
+* Certified with Line SDK 2.9.20251028.
+
+## 2025.9.24.0
+* Certified with Line SDK 2.9.20250924.
+
+## 2025.7.18.1
+* Removed usage of deprecated `needGdprNonPersonalizedAdsTreatment` property.
+
 ## 2025.7.18.0
 * Certified with Line SDK 2.9.20250718.
 * Updated ad display failed error code.

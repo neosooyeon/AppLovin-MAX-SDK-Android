@@ -1,13 +1,13 @@
 plugins {
     id("adapter-config")
+    id("com.applovin.mobile.publish")
 }
 
-afterEvaluate {
-    apply(plugin = "adapter-publish")
-}
-
-val libraryVersionName by extra("24.5.0.0")
-val libraryArtifactId by extra("google-ad-manager-adapter")
+val libraryVersionName by extra("25.5.0.0")
 val minAppLovinSdkVersion by extra("13.0.0")
+
+applovinMobilePublish {
+    libraryArtifactId.set("google-ad-manager-adapter")
+}
 
 android.defaultConfig.minSdk = 23

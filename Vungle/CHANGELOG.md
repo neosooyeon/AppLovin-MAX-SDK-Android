@@ -1,5 +1,56 @@
 # Changelog
 
+## 7.7.9.0
+* Certified with Vungle SDK 7.7.9.
+
+## 7.7.8.1
+* Remove ProGuard rules since they are included in Vungle's libraries.
+
+## 7.7.8.0
+* Certified with Vungle SDK 7.7.8.
+
+## 7.7.7.1
+* Removed `canPlayAd()` and SDK-initialization checks to follow Vungle SDK. Added `VungleMediationLogger` for null ad instances, native ad mismatch, and unspecified errors.
+
+## 7.7.7.0
+* Certified with Vungle SDK 7.7.7.
+
+## 7.7.6.0
+* Certified with Vungle SDK 7.7.6.
+
+## 7.7.5.0
+* Certified with Vungle SDK 7.7.5.
+
+## 7.7.4.0
+* Certified with Vungle SDK 7.7.4.
+
+## 7.7.3.1
+* Add `adapterAdFormat` tracking and adaptive banner size mismatch logging for Vungle SDK.
+
+## 7.7.3.0
+* Certified with Vungle SDK 7.7.3.
+
+## 7.7.2.0
+* Certified with Vungle SDK 7.7.2.
+
+## 7.7.1.0
+* Certified with Vungle SDK 7.7.1.
+
+## 7.7.0.0
+* Certified with Vungle SDK 7.7.0.
+
+## 7.6.3.0
+* Certified with Vungle SDK 7.6.3.
+
+## 7.6.2.0
+* Certified with Vungle SDK 7.6.2.
+
+## 7.6.1.0
+* Certified with Vungle SDK 7.6.1.
+
+## 7.6.0.0
+* Certified with Vungle SDK 7.6.0.
+
 ## 7.5.1.0
 * Certified with Vungle SDK 7.5.1.
 
@@ -19,7 +70,7 @@
 * Updated ad view sizing API method signature to be consistent with codebase.
 
 ## 7.4.3.2
-* Add support for [adaptive banners](https://developers.applovin.com/en/max/android/ad-formats/banner-and-mrec-ads#adaptive-banners) & inline adaptive ads in both [banners](https://developers.applovin.com/en/max/android/ad-formats/banner-and-mrec-ads#inline-adaptive-banners) and [MRECs](https://developers.applovin.com/en/max/android/ad-formats/banner-and-mrec-ads/#inline-adaptive-mrecs). Requires AppLovin MAX SDK 13.2.0 or higher.
+* Add support for [adaptive banners](https://support.axon.ai/en/max/android/ad-formats/banner-and-mrec-ads#adaptive-banners) & inline adaptive ads in both [banners](https://support.axon.ai/en/max/android/ad-formats/banner-and-mrec-ads#inline-adaptive-banners) and [MRECs](https://support.axon.ai/en/max/android/ad-formats/banner-and-mrec-ads#inline-adaptive-mrecs). Requires AppLovin MAX SDK 13.2.0 or higher.
 * Removed deprecated code paths based on the minimum supported AppLovin MAX SDK version 13.0.0.
 
 ## 7.4.3.1

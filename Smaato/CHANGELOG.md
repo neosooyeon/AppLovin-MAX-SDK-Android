@@ -1,5 +1,32 @@
 # Changelog
 
+## 23.2.3.0
+* Certified with Smaato SDK 23.2.3.
+
+## 23.2.2.0
+* Certified with Smaato SDK 23.2.2.
+
+## 23.2.1.0
+* Certified with Smaato SDK 23.2.1.
+
+## 23.2.0.0
+* Certified with Smaato SDK 23.2.0.
+
+## 23.1.0.0
+* Certified with Smaato SDK 23.1.0.
+
+## 23.0.1.1
+* Added R8/ProGuard keeps for `com.verve.**` so in-app bidding works when minification is enabled (Smaato SDK 23.0.1+ / Verve NG).
+
+## 23.0.1.0
+* Certified with Smaato SDK 23.0.1.
+
+## 22.7.2.3
+* Added back Smaato SDK 22.7.2 dependency due to a publishing issue.
+
+## 22.7.2.2
+* Updated ad display failed error code.
+
 ## 22.7.2.1
 * Removed deprecated code paths based on the minimum supported AppLovin MAX SDK version 13.0.0.
 * Updated minimum Android API level to 21 to match Smaato SDK.

@@ -1,5 +1,59 @@
 # Changelog
 
+## 8.6.0.0
+* Certified with Yandex SDK 8.6.0.
+
+## 8.5.0.0
+* Certified with Yandex SDK 8.5.0.
+
+## 8.4.0.0
+* Certified with Yandex SDK 8.4.0.
+
+## 8.3.0.0
+* Certified with Yandex SDK 8.3.0.
+
+## 8.2.0.1
+* Removed the explicit `io.appmetrica.analytics:analytics` dependency.
+
+## 8.2.0.0
+* Certified with Yandex SDK 8.2.0.
+
+## 8.1.0.0
+* Certified with Yandex SDK 8.1.0.
+
+## 8.0.0.0
+* Certified with Yandex SDK 8.0.0.
+
+## 7.18.5.0
+* Certified with Yandex SDK 7.18.5.
+
+## 7.18.4.0
+* Certified with Yandex SDK 7.18.4.
+
+## 7.18.3.0
+* Certified with Yandex SDK 7.18.3.
+
+## 7.18.2.0
+* Certified with Yandex SDK 7.18.2.
+
+## 7.18.1.0
+* Certified with Yandex SDK 7.18.1.
+
+## 7.18.0.0
+* Certified with Yandex SDK 7.18.0.
+
+## 7.17.0.0
+* Certified with Yandex SDK 7.17.0.
+
+## 7.16.1.0
+* Certified with Yandex SDK 7.16.1.
+
+## 7.16.0.0
+* Certified with Yandex SDK 7.16.0.
+
+## 7.15.2.0
+* Certified with Yandex SDK 7.15.2.
+
 ## 7.15.1.0
 * Certified with Yandex SDK 7.15.1.
 
@@ -20,7 +74,7 @@
 * Certified with Yandex SDK 7.12.3.
 
 ## 7.12.2.1
-* Add support for [adaptive banners](https://developers.applovin.com/en/max/android/ad-formats/banner-and-mrec-ads#adaptive-banners) & inline adaptive ads in both [banners](https://developers.applovin.com/en/max/android/ad-formats/banner-and-mrec-ads#inline-adaptive-banners) and [MRECs](https://developers.applovin.com/en/max/android/ad-formats/banner-and-mrec-ads/#inline-adaptive-mrecs). Requires AppLovin MAX SDK 13.2.0 or higher.
+* Add support for [adaptive banners](https://support.axon.ai/en/max/android/ad-formats/banner-and-mrec-ads#adaptive-banners) & inline adaptive ads in both [banners](https://support.axon.ai/en/max/android/ad-formats/banner-and-mrec-ads#inline-adaptive-banners) and [MRECs](https://support.axon.ai/en/max/android/ad-formats/banner-and-mrec-ads#inline-adaptive-mrecs). Requires AppLovin MAX SDK 13.2.0 or higher.
 * Removed deprecated code paths based on the minimum supported AppLovin MAX SDK version 13.0.0.
 
 ## 7.12.2.0
